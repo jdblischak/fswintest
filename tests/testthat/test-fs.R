@@ -4,20 +4,40 @@ library(fs)
 
 describe("dir_exists", {
 
-  it("works for paths with trailing forward slash", {
+  it("works for absolute paths with trailing forward slash", {
     d_forward <- paste0(file_temp(), "/")
     expect_false(dir_exists(d_forward))
     dir_create(d_forward)
     expect_true(dir_exists(d_forward))
     expect_true(dir_exists(path(d_forward)))
+    dir_delete(d_forward)
   })
 
-  it("works for paths with trailing back slash", {
+  it("works for absolute paths with trailing back slash", {
     d_back <- paste0(file_temp(), "\\")
     expect_false(dir_exists(d_back))
     dir_create(d_back)
     expect_true(dir_exists(d_back))
     expect_true(dir_exists(path(d_back)))
+    dir_delete(d_back)
+  })
+
+  it("works for relative paths with trailing forward slash", {
+    d_forward <- "test-forward/"
+    expect_false(dir_exists(d_forward))
+    dir_create(d_forward)
+    expect_true(dir_exists(d_forward))
+    expect_true(dir_exists(path(d_forward)))
+    dir_delete(d_forward)
+  })
+
+  it("works for relative paths with trailing back slash", {
+    d_back <- "test-back\\"
+    expect_false(dir_exists(d_back))
+    dir_create(d_back)
+    expect_true(dir_exists(d_back))
+    expect_true(dir_exists(path(d_back)))
+    dir_delete(d_back)
   })
 
 })

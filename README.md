@@ -8,6 +8,18 @@ Tests the behavior of the [fs][] package on Windows machines, particularly on
 [fs]: https://cran.r-project.org/package=fs
 [winbuilder]: https://win-builder.r-project.org/
 
+## Issue and potential solution
+
+`fs::path_wd()` returns the Windows drive in lower case (`d:/`) while
+`fs::path_temp()` returns it in upper case (`D:/`). This isn't initially an
+issue because Windows is a case-insensitive file system. However, the problem
+arises when trying to do path manipulations like `fs::path_rel()`, which do not
+take the case-insensitivity of the file system into account.
+
+For differences in the case of the Windows drive, I propose that the definition
+of a tidy path (`fs::path_tidy()`) is expanded to include the requirement that
+the Windows drive is always capitalized.
+
 ## winbuilder results
 
 Below are the tests results (`examples_and_tests/tests_x64/testthat.Rout.fail`):
@@ -39,13 +51,13 @@ path_rel(d2, start = d1) not equal to "../../test2/d2".
 x[1]: "../../../d:/test2/d2"
 y[1]: "../../test2/d2"
 
--- 2. Failure: path_rel: can be reversed by path_abs (@test-fs.R#39)  ----------
+-- 2. Failure: path_rel: can be reversed by path_abs (@test-fs.R#61)  ----------
 path_abs(path_rel(f)) not equal to `f`.
 1/1 mismatches
-x[1]: "d:/D:/temp/RtmpOEUaee/file186e43d3e368a"
-y[1]: "D:/temp/RtmpOEUaee/file186e43d3e368a"
+x[1]: "d:/D:/temp/RtmpI1pvmi/file11c0c3b7c1fa0"
+y[1]: "D:/temp/RtmpI1pvmi/file11c0c3b7c1fa0"
 
--- 3. Failure: path_rel: can be reversed by path_abs (@test-fs.R#42)  ----------
+-- 3. Failure: path_rel: can be reversed by path_abs (@test-fs.R#64)  ----------
 file_exists(path_abs(path_rel(f))) isn't true.
 
 -- 4. Failure: path_wd: returns the Windows drive the same case as file_temp (@t
@@ -55,39 +67,56 @@ x[1]: "D:"
 y[1]: "d:"
 
 == testthat results  ===========================================================
-OK: 7 SKIPPED: 0 FAILED: 4
-1. Failure: path_rel: works for relative paths with case differences that connect via the Windows drive (@test-fs.R#34) 
-2. Failure: path_rel: can be reversed by path_abs (@test-fs.R#39) 
-3. Failure: path_rel: can be reversed by path_abs (@test-fs.R#42) 
-4. Failure: path_wd: returns the Windows drive the same case as file_temp (@test-fs.R#58) 
+OK: 16 SKIPPED: 0 FAILED: 4
+1. Failure: path_rel: works for relative paths with case differences that connect via the Windows drive (@test-fs.R#56) 
+2. Failure: path_rel: can be reversed by path_abs (@test-fs.R#61) 
+3. Failure: path_rel: can be reversed by path_abs (@test-fs.R#64) 
+4. Failure: path_wd: returns the Windows drive the same case as file_temp (@test-fs.R#80) 
 
 Error: testthat unit tests failed
 Execution halted
 ```
 
-There are two main issues:
+# winbuilder information
 
-1. `fs::dir_exists()` returns `FALSE` if the path to an existing directory ends
-in a trailing `/` or `\\`. This pecularity appears to be limited to winbuilder.
+* i386
 
-1. `fs::path_wd()` returns the Windows drive in lower case (`d:/`) while
-`fs::path_temp()` returns it in upper case (`D:/`). This isn't initially an
-issue because Windows is a case-insensitive file system. However, the problem
-arises when trying to do path manipulations like `fs::path_rel()`, which do not
-take the case-insensitivity of the file system into account.
+```
+>  info()
+-- Basic info ------------------------------------------------------------------
+fs version: 1.2.6
+R version: R version 3.5.2 (2018-12-20)
+platform: i386-w64-mingw32/i386 (32-bit)
+locale: LC_COLLATE=C;LC_CTYPE=German_Germany.1252;LC_MONETARY=C;LC_NUMERIC=C;LC_TIME=C
+-- Directories -----------------------------------------------------------------
+current: d:/RCompile/CRANguest/R-release/fswintest.Rcheck/examples_i386
+home: C:/Users/CRAN
+home (R): C:/Users/CRAN/Documents
+R installation: D:/RCompile/recent/R-35~1.2
+Temporary: D:/temp/RtmpueKjse
+-- Windows info ----------------------------------------------------------------
+HOMEDRIVE: C:
+HOMEPATH: \Users\CRAN
+USERPROFILE: C:\Users\CRAN
+```
 
-Potential solutions:
+* x64
 
-1. For `fs::dir_exists()`, strip any trailing slash by first passing it through
-`fs::path()`. Change:
-    ```
-    res <- is_dir(path)
-    ```
-    to
-    ```
-    res <- is_dir(path(path))
-    ```
-
-1. For differences in the case of the Windows drive, I propose that the
-definition of a tidy path (`fs::path_tidy()`) is expanded to include the
-requirement that the Windows drive is always capitalized.
+```
+>  info()
+-- Basic info ------------------------------------------------------------------
+fs version: 1.2.6
+R version: R version 3.5.2 (2018-12-20)
+platform: x86_64-w64-mingw32/x64 (64-bit)
+locale: LC_COLLATE=C;LC_CTYPE=German_Germany.1252;LC_MONETARY=C;LC_NUMERIC=C;LC_TIME=C
+-- Directories -----------------------------------------------------------------
+current: d:/RCompile/CRANguest/R-release/fswintest.Rcheck/examples_x64
+home: C:/Users/CRAN
+home (R): C:/Users/CRAN/Documents
+R installation: D:/RCompile/recent/R-35~1.2
+Temporary: D:/temp/RtmpOaDc9W
+-- Windows info ----------------------------------------------------------------
+HOMEDRIVE: C:
+HOMEPATH: \Users\CRAN
+USERPROFILE: C:\Users\CRAN
+```
