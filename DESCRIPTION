@@ -1,0 +1,23 @@
+Package: fswintest
+Title: Tests Behavior of File Paths on Windows Machines
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "John",
+           family = "Blischak",
+           role = c("aut", "cre"),
+           email = "jdblischak@gmail.com")
+Description: Tests the behavior of the fs package on Windows machines,
+  particularly on winbuilder.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    fs,
+    glue,
+    cli
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
