@@ -13,7 +13,6 @@ Tests the behavior of the [fs][] package on Windows machines, particularly on
 Below are the tests results (`examples_and_tests/tests_x64/testthat.Rout.fail`):
 
 ```
-
 R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
 Copyright (C) 2018 The R Foundation for Statistical Computing
 Platform: x86_64-w64-mingw32/x64 (64-bit)
@@ -79,14 +78,15 @@ take the case-insensitivity of the file system into account.
 
 Potential solutions:
 
-1. For `fs::dir_exists()`, strip any trailing slash by first passing it through `fs::path()`. Change:
-```
-res <- is_dir(path)
-```
-to
-```
-res <- is_dir(path(path))
-```
+1. For `fs::dir_exists()`, strip any trailing slash by first passing it through
+`fs::path()`. Change:
+    ```
+    res <- is_dir(path)
+    ```
+    to
+    ```
+    res <- is_dir(path(path))
+    ```
 
 1. For differences in the case of the Windows drive, I propose that the
 definition of a tidy path (`fs::path_tidy()`) is expanded to include the
