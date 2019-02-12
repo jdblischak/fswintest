@@ -10,6 +10,9 @@ is_win <- function() .Platform$OS.type == "windows"
 #'
 #' Reports information on the current setup.
 #'
+#' @examples
+#'  info()
+#'
 #' @export
 info <- function() {
 

@@ -9,3 +9,7 @@ info()
 \description{
 Reports information on the current setup.
 }
+\examples{
+ info()
+
+}
