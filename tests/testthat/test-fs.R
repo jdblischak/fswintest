@@ -9,6 +9,7 @@ describe("dir_exists", {
     expect_false(dir_exists(d_forward))
     dir_create(d_forward)
     expect_true(dir_exists(d_forward))
+    expect_true(dir_exists(path(d_forward)))
   })
 
   it("works for paths with trailing back slash", {
@@ -16,6 +17,7 @@ describe("dir_exists", {
     expect_false(dir_exists(d_back))
     dir_create(d_back)
     expect_true(dir_exists(d_back))
+    expect_true(dir_exists(path(d_back)))
   })
 
 })
@@ -56,6 +58,7 @@ describe("path_wd", {
     drive_temp <- path_split(path_temp())[[1]][1]
     drive_wd <- path_split(path_wd())[[1]][1]
     expect_identical(drive_temp, drive_wd)
+    expect_identical(toupper(drive_temp), toupper(drive_wd))
   })
 
 })
