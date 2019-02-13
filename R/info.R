@@ -35,6 +35,14 @@ info <- function() {
     message(glue::glue('HOMEDRIVE: {Sys.getenv("HOMEDRIVE")}'))
     message(glue::glue('HOMEPATH: {Sys.getenv("HOMEPATH")}'))
     message(glue::glue('USERPROFILE: {Sys.getenv("USERPROFILE")}'))
+    for (drive in LETTERS[3:8]) {
+      drive_path <- glue::glue("{drive}:/")
+      if (fs::dir_exists(drive_path)) {
+        message(cli::rule(drive_path))
+        message(glue::glue("Drive {drive_path} contains the following directories:"))
+        message(glue::glue("{paste(fs::dir_ls(drive_path), collapse = '\n')}"))
+      }
+    }
   }
 
   return(invisible(NULL))
