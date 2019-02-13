@@ -93,11 +93,84 @@ current: d:/RCompile/CRANguest/R-release/fswintest.Rcheck/examples_i386
 home: C:/Users/CRAN
 home (R): C:/Users/CRAN/Documents
 R installation: D:/RCompile/recent/R-35~1.2
-Temporary: D:/temp/RtmpueKjse
+Temporary: D:/temp/RtmpUNkmGJ
 -- Windows info ----------------------------------------------------------------
 HOMEDRIVE: C:
 HOMEPATH: \Users\CRAN
 USERPROFILE: C:\Users\CRAN
+-- C:/ -------------------------------------------------------------------------
+Drive C:/ contains the following directories:
+C:/$Recycle.Bin
+C:/adsm.sys
+C:/Boot
+C:/bootmgr
+C:/BOOTSECT.BAK
+C:/cmdline
+C:/ConEmu
+C:/Config.Msi
+C:/Documents and Settings
+C:/Dokumente und Einstellungen
+C:/EnergyPlusV8-8-0
+C:/fit4NM
+C:/GBM
+C:/inetpub
+C:/Intel
+C:/Klausur.xps
+C:/lib
+C:/localsolver_4_0
+C:/newRtools
+C:/Octave
+C:/OkiDriver
+C:/pagefile.sys
+C:/PerfLogs
+C:/Program Files
+C:/Program Files (x86)
+C:/ProgramData
+C:/Programme
+C:/System Volume Information
+C:/Temp
+C:/Users
+C:/Windows
+-- D:/ -------------------------------------------------------------------------
+Drive D:/ contains the following directories:
+D:/$RECYCLE.BIN
+D:/adaptec
+D:/C.bat
+D:/census.RData
+D:/Compiler
+D:/cranmails.tar.gz
+D:/ESS7CH.sav
+D:/Excel_Varianz.xls
+D:/gretl-2017d-64.exe
+D:/id_rsa.pub
+D:/library-devel
+D:/lilypond-2.18.2-1.mingw.exe
+D:/msys
+D:/murdoch
+D:/output.tif
+D:/packages.rds
+D:/problems.RData
+D:/R-devel.bat
+D:/R-devel64.bat
+D:/R-old.bat
+D:/R-old64.bat
+D:/R-release.bat
+D:/R-release64.bat
+D:/R32devel493
+D:/RCompile
+D:/SBML
+D:/svn.bat
+D:/System Volume Information
+D:/temp
+D:/temp.RData
+D:/tmp
+D:/updateAll.bat
+D:/wild.R-project.org.2018.crt
+-- E:/ -------------------------------------------------------------------------
+Drive E:/ contains the following directories:
+E:/$RECYCLE.BIN
+E:/Archiv
+E:/System Volume Information
 ```
 
 * x64
@@ -114,9 +187,82 @@ current: d:/RCompile/CRANguest/R-release/fswintest.Rcheck/examples_x64
 home: C:/Users/CRAN
 home (R): C:/Users/CRAN/Documents
 R installation: D:/RCompile/recent/R-35~1.2
-Temporary: D:/temp/RtmpOaDc9W
+Temporary: D:/temp/RtmpULQoxD
 -- Windows info ----------------------------------------------------------------
 HOMEDRIVE: C:
 HOMEPATH: \Users\CRAN
 USERPROFILE: C:\Users\CRAN
+-- C:/ -------------------------------------------------------------------------
+Drive C:/ contains the following directories:
+C:/$Recycle.Bin
+C:/adsm.sys
+C:/Boot
+C:/bootmgr
+C:/BOOTSECT.BAK
+C:/cmdline
+C:/ConEmu
+C:/Config.Msi
+C:/Documents and Settings
+C:/Dokumente und Einstellungen
+C:/EnergyPlusV8-8-0
+C:/fit4NM
+C:/GBM
+C:/inetpub
+C:/Intel
+C:/Klausur.xps
+C:/lib
+C:/localsolver_4_0
+C:/newRtools
+C:/Octave
+C:/OkiDriver
+C:/pagefile.sys
+C:/PerfLogs
+C:/Program Files
+C:/Program Files (x86)
+C:/ProgramData
+C:/Programme
+C:/System Volume Information
+C:/Temp
+C:/Users
+C:/Windows
+-- D:/ -------------------------------------------------------------------------
+Drive D:/ contains the following directories:
+D:/$RECYCLE.BIN
+D:/adaptec
+D:/C.bat
+D:/census.RData
+D:/Compiler
+D:/cranmails.tar.gz
+D:/ESS7CH.sav
+D:/Excel_Varianz.xls
+D:/gretl-2017d-64.exe
+D:/id_rsa.pub
+D:/library-devel
+D:/lilypond-2.18.2-1.mingw.exe
+D:/msys
+D:/murdoch
+D:/output.tif
+D:/packages.rds
+D:/problems.RData
+D:/R-devel.bat
+D:/R-devel64.bat
+D:/R-old.bat
+D:/R-old64.bat
+D:/R-release.bat
+D:/R-release64.bat
+D:/R32devel493
+D:/RCompile
+D:/SBML
+D:/svn.bat
+D:/System Volume Information
+D:/temp
+D:/temp.RData
+D:/tmp
+D:/updateAll.bat
+D:/wild.R-project.org.2018.crt
+-- E:/ -------------------------------------------------------------------------
+Drive E:/ contains the following directories:
+E:/$RECYCLE.BIN
+E:/Archiv
+E:/System Volume Information
 ```
